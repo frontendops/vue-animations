@@ -1,5 +1,5 @@
 <template>
-<transition name="slideout" type="transition">
+<transition appear name="slideout" type="transition">
   <section class="slideout">
     <div class="slideout__container">
      <h1 class="slideout__heading">Slideout</h1>
@@ -63,5 +63,13 @@ export default {
     display: flex;
     justify-content: space-around;
   }
+}
+
+.slideout-enter {
+  transform: translateX(-500px)
+}
+
+.slideout-enter-active {
+  transition: transform 0.8s;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Slideout v-if="menuOpen"/>
-    <MenuButton @toggle-menu="toggleMenu"/>
+      <MenuButton @toggle-menu="toggleMenu"/>
   </div>
 </template>
 
