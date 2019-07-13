@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Slideout v-if="menuOpen"/>
+    <MenuButton @toggle-menu="toggleMenu"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Slideout from './components/Slideout.vue'
+import MenuButton from './components/MenuButton.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      menuOpen: true
+    }
+  },
   components: {
-    HelloWorld
+    Slideout,
+    MenuButton
+  },
+  methods: {
+    toggleMenu () {
+      this.menuOpen = !this.menuOpen
+    }
   }
 }
 </script>
 
 <style lang="scss">
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+h1, h2, h3, h4, h5 {
+  padding: 0;
+  margin: 0;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 </style>
