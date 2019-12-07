@@ -2,6 +2,7 @@
   <div id="app">
     <Slideout v-if="menuOpen"/>
       <MenuButton @toggle-menu="toggleMenu"/>
+      <MenuButton v-for="number in numbers" :key="number"/>
   </div>
 </template>
 
@@ -13,7 +14,10 @@ export default {
   name: 'app',
   data() {
     return {
-      menuOpen: true
+      menuOpen: false,
+      numbers: [
+        1,2,3,4, 5, 6
+      ]
     }
   },
   components: {

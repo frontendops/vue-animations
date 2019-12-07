@@ -1,19 +1,25 @@
 <template>
-<transition appear name="slideout" type="transition">
-  <section class="slideout">
-    <div class="slideout__container">
-     <h1 class="slideout__heading">Slideout</h1>
-     <div class="slideout__player"></div>
+<div>
+  <transition appear name="slideout" type="transition" @enter="showChildren">
+    <section class="slideout">
+      <transition name="slideout-children" type="transition">
+        <div class="slideout__container" v-if="childrenShown">
+        <h1 class="slideout__heading">Slideout</h1>
+        <div class="slideout__player"></div>
 
-     <div class="slideout__actions">
-       <span>Sword</span>
-       <span>shield</span>
-       <span>arrow</span>
-     </div>
+        <div class="slideout__actions">
+          <span>Sword</span>
+          <span>shield</span>
+          <span>arrow</span>
+        </div>
+        </div>
+      </transition>
+    </section>
+  </transition>
 
-    </div>
-  </section>
-</transition>
+  
+</div>
+
 </template>
 
 <script>
@@ -21,6 +27,16 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      childrenShown: false
+    }
+  },
+  methods: {
+    showChildren () {
+      this.childrenShown = true
+    }
   }
 }
 </script>
@@ -65,11 +81,20 @@ export default {
   }
 }
 
-.slideout-enter {
-  transform: translateX(-500px)
+.slideout-enter, .slideout-leave-to {
+  transform: translateX(-500px);
+  opacity: 0;
 }
 
-.slideout-enter-active {
-  transition: transform 0.8s;
+.slideout-enter-active, .slideout-leave-active {
+  transition: transform 0.4s, opacity 0.6s;
+}
+.slideout-children-enter, .slideout-children-leave-to {
+  transform: translateX(-250px);
+  opacity: 0;
+}
+
+.slideout-children-enter-active, .slideout-children-leave-active {
+  transition: transform 0.6s, opacity 1s;
 }
 </style>
